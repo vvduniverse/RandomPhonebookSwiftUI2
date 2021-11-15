@@ -9,9 +9,7 @@ import SwiftUI
 
 struct DetailsView: View {
     
-    let fullname: String
-    let phone: String
-    let email: String
+    let person: Person
     
     var body: some View {
         VStack {
@@ -22,20 +20,20 @@ struct DetailsView: View {
                 .frame(height: 300)
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Phone: \(phone)")
-                    Text("E-mail: \(email)")
+                    Text("Phone: \(person.phoneNumber)")
+                    Text("E-mail: \(person.email)")
                 }.padding([.leading, .top], 40)
                     .font(.system(size: 20))
                 Spacer()
             }
             Spacer()
         }
-        .navigationTitle("\(fullname)")
+        .navigationTitle("\(person.fullName)")
     }
 }
 
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsView(fullname: "", phone: "", email: "")
+        DetailsView(person: Person.getContactList().first!)
     }
 }
